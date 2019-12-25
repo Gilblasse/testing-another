@@ -10,4 +10,3 @@ ActiveRecord::Base.establish_connection(
 
 require './app/controllers/application_controller'
 require_all 'app'
-require 'em/pure_ruby' if not defined?(EventMachine)
