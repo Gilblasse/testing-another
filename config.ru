@@ -5,6 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+use AddressesController
+use TripsController
 use RatingsController
 use PassengersController
 use DriversController
