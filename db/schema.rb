@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191226051337) do
+ActiveRecord::Schema.define(version: 20191226200022) do
 
   create_table "drivers", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "current_location"
+    t.boolean  "available?",       default: true
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -37,9 +39,12 @@ ActiveRecord::Schema.define(version: 20191226051337) do
   create_table "trips", force: :cascade do |t|
     t.integer  "passenger_id"
     t.integer  "driver_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "address"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "origin_title"
+    t.string   "origin_address"
+    t.string   "destination_title"
+    t.string   "destination_address"
   end
 
 end

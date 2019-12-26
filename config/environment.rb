@@ -10,3 +10,13 @@ ActiveRecord::Base.establish_connection(
 
 require './app/controllers/application_controller'
 require_all 'app'
+
+# Setup global parameters
+GoogleMapsService.configure do |config|
+  config.key = 'AIzaSyBaJUNgMSEae4z_X1lRQI-2PjqwfamHNOk'
+  config.retry_timeout = 20
+  config.queries_per_second = 10
+end
+
+# Initialize client using global parameters
+$gmaps = GoogleMapsService::Client.new

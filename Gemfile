@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
 gem 'eventmachine', '~> 1.0.0'
+gem 'google_maps_service'
 
 
 
