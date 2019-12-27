@@ -5,7 +5,6 @@ class Driver < ActiveRecord::Base
 
     attr_accessor :drivers_distance
 
-
     def self.closest_drivers(passenger_location)
         five_miles = 26411 #apporximate number of ft in 5 miles
         closest_drivers = self.all.select {|driver| driver.distance_from(passenger_location) < five_miles  &&  driver.available? == true}
@@ -17,9 +16,20 @@ class Driver < ActiveRecord::Base
         num = distance.gsub(/[A-Za-z\s]/,"").to_f
         measurement = distance.scan(/([A-Za-z])/).join
 
-        calc = {"ft"=> num,"mi"=> num * 5280} #convert everthing to feet
+        calc = {"ft"=> num,"mi"=> num * 5280} #converts everthing to feet
 
         @drivers_distance = calc[measurement]
+    end
+
+    def score
+        return 5 if passenger_ratings.empty? 
+        stars = passenger_ratings.map{|rating| rating.stars }
+        stars.reduce{ |sum, num| sum + num }.to_i / stars.size
+    end
+
+    def passenger_ratings
+        ratings = self.trips.map{|trip| trip.ratings }.flatten.select{|r| r.ratingable.class == Passenger }
+        ratings
     end
 
 end

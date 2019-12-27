@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191226200022) do
+ActiveRecord::Schema.define(version: 20191227040722) do
 
   create_table "drivers", force: :cascade do |t|
     t.string   "name"
@@ -31,9 +31,10 @@ ActiveRecord::Schema.define(version: 20191226200022) do
     t.string   "comment"
     t.integer  "ratingable_id"
     t.string   "ratingable_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "trip_id"
+    t.integer  "stars",           default: 0
   end
 
   create_table "trips", force: :cascade do |t|
