@@ -24,12 +24,12 @@ class Passenger < ActiveRecord::Base
     end
 
     def score 
-       return 5 if driver_ratings.empty?
-        stars = driver_ratings.map{|rating| rating.stars }
+       return 5 if drivers_ratings.empty?
+        stars = drivers_ratings.map{|rating| rating.stars }
         stars.reduce{ |sum, num| sum + num }.to_i / stars.size
     end
 
-    def driver_ratings
+    def drivers_ratings
         ratings = self.trips.map{|trip| trip.ratings }.flatten.select{|r| r.ratingable.class == Driver }
         ratings
     end

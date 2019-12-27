@@ -21,13 +21,24 @@ class Driver < ActiveRecord::Base
         @drivers_distance = calc[measurement]
     end
 
+    def rate_passenger(rating={},trip)
+        if trip.ratings.none? {|rating|  rating.ratingable == self }
+            rating = self.ratings.create(comment: rating[:comment],stars: rating[:stars])
+
+            trip.ratings << rating
+            rating
+        else  
+            "Sorry #{self.name} but your only Allowed 1 rating Per Trip"
+        end
+    end
+
     def score
-        return 5 if passenger_ratings.empty? 
-        stars = passenger_ratings.map{|rating| rating.stars }
+        return 5 if passengers_ratings.empty? 
+        stars = passengers_ratings.map{|rating| rating.stars }
         stars.reduce{ |sum, num| sum + num }.to_i / stars.size
     end
 
-    def passenger_ratings
+    def passengers_ratings
         ratings = self.trips.map{|trip| trip.ratings }.flatten.select{|r| r.ratingable.class == Passenger }
         ratings
     end
