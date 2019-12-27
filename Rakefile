@@ -23,5 +23,11 @@ namespace 'db' do
 
         puts "Database is clean..."
     end
+
+    desc "Resets data then seeds new data"
+    task 'reload_seed_data' do 
+        Rake::Task["db:reset!"].invoke
+        Rake::Task["db:seed"].invoke
+    end
     
 end
