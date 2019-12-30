@@ -1,1 +1,47 @@
-<h1>This is the Model's index page.</h1>
+
+<style>
+.star {
+    color: #ff3008;
+    font-size: 24px;
+    cursor: pointer;
+}
+#map {
+        height: 500px;
+        width:900px;
+      }
+</style>
+<h1>This is the Passenger's index page.</h1>
+
+<div id="map"></div>
+   <img src="<%=@image%>">
+  <h3><%=@passengers.size%></h3>
+   <%@passengers.each do |passenger|%>
+   <% remaining_score = 5 - passenger.score %>
+   <p>
+        <%=passenger.name%> 
+        <%=passenger.trips.first.driver.name%>
+        score:
+        <span id="stars">
+            <%passenger.score.times do %> 
+                <i class="material-icons star">star</i> 
+            <%end%> 
+            <%remaining_score.times do %> 
+                <i class="material-icons star">star_border</i>  
+            <%end%> 
+        </span>
+            
+   </p>
+   <%end%>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 12
+        });
+      }
+    </script>
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%=$google_map_api_key%>&callback=initMap"
+    async defer></script>

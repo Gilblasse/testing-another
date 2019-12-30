@@ -51,6 +51,7 @@ GEM
       hurley (~> 0.1)
       multi_json (~> 1.11)
       retriable (~> 2.0)
+    googlestaticmap (1.2.6)
     hurley (0.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -133,6 +134,7 @@ DEPENDENCIES
   eventmachine (~> 1.0.0)
   faker
   google_maps_service
+  googlestaticmap (~> 1.2, >= 1.2.6)
   pry
   rack-test
   rake

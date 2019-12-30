@@ -12,8 +12,9 @@ require './app/controllers/application_controller'
 require_all 'app'
 
 # Setup global parameters
+$google_map_api_key = "AIzaSyBaJUNgMSEae4z_X1lRQI-2PjqwfamHNOk"
 GoogleMapsService.configure do |config|
-  config.key = 'AIzaSyBaJUNgMSEae4z_X1lRQI-2PjqwfamHNOk'
+  config.key = $google_map_api_key
   config.retry_timeout = 20
   config.queries_per_second = 10
 end

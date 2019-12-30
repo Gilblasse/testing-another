@@ -2,6 +2,15 @@ class PassengersController < ApplicationController
 
   # GET: /passengers
   get "/passengers" do
+    # binding.pry
+    @passengers = Passenger.all
+    
+    map = GoogleStaticMap.new
+    map.api_key = $google_map_api_key
+    map.markers << MapMarker.new(:color => "#ff3008", :location => MapLocation.new(:address => "1600 Pennsylvania Ave., Washington, DC"))
+    map.markers << MapMarker.new(:color => "blue", :location => MapLocation.new(:address => "1 1st Street Northeast, Washington, DC"))
+    @image = map.url('http')
+    
     erb :"/passengers/index.html"
   end
 
