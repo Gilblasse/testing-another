@@ -26,7 +26,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
     bcrypt (3.1.13)
@@ -61,12 +61,14 @@ GEM
     minitest (5.13.0)
     multi_json (1.14.1)
     mustermann (1.0.3)
+    nokogiri (1.10.7)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.7-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (4.0.1)
+    public_suffix (4.0.6)
     rack (2.0.8)
     rack-protection (2.0.7)
       rack
@@ -125,6 +127,7 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   activerecord (~> 4.2, >= 4.2.6)
